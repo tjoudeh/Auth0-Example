@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <link href="content/app.css" rel="stylesheet" />
+        <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    </head>
+    <body ng-app="auth0-sample" class="home" ng-controller="mainController" data-ng-cloak="">
+        <div class="login-page clearfix">
+          <div class="login-box auth0-box" ng-hide="loggedIn">
+            <img src="https://i.cloudup.com/StzWWrY34s.png" />
+            <h3>Auth0 Example</h3>
+            <p>Zero friction identity infrastructure, built for developers</p>
+             <a ng-click="login()" class="btn btn-primary btn-lg btn-block">SignIn</a>
+          </div>
+             <!-- This log in page would normally be done using routes
+          but for the simplicity of the excercise, we're using ng-show -->
+          <div ng-show="loggedIn" class="logged-in-box auth0-box">
+            <img ng-src="{{auth.profile.picture}}" class="avatar"/>
+            <h3>Welcome {{auth.profile.name}}</h3>
+              
+            <div class="profile-info row">
+                <div class="profile-info-label col-xs-6">Nickname</div>
+                <div class="profile-info-content col-xs-6">{{auth.profile.nickname}}</div>
+            </div>
+            <div class="profile-info row">
+                <div class="profile-info-label col-xs-6">Your JSON Web Token</div>
+                <div class="profile-info-content col-xs-6">{{auth.idToken | limitTo:12}}...</div>
+                
+            </div>
+                 <div class="profile-info row">
+                    <a ng-href ="#/shipments" class="btn btn-success btn-sm btn-block">View my shipments</a>
+               </div>
+               <div class="profile-info row">
+                    <a ng-click="logout()" class="btn btn-danger btn-sm btn-block">Log out</a>
+               </div>
+             
+          </div>
+
+          <div data-ng-view="">
+        </div>
+        </div>
+        
+        <script src="https://code.angularjs.org/1.2.16/angular.min.js" type="text/javascript"></script>
+        <script src="https://code.angularjs.org/1.2.16/angular-cookies.min.js" type="text/javascript"></script>
+        <script src="https://code.angularjs.org/1.2.16/angular-route.min.js" type="text/javascript"></script>
+        <script src="https://cdn.auth0.com/w2/auth0-widget-4.js"></script>
+        <script src="https://cdn.auth0.com/w2/auth0-angular-0.4.js"> </script>
+        <script src="app/app.js" type="text/javascript"></script>
+        <script src="app/controllers.js" type="text/javascript"></script>
+    </body>
+</html>
+
